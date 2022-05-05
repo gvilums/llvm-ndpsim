@@ -1988,6 +1988,10 @@ void CodeGenModule::SetLLVMFunctionAttributesForDefinition(const Decl *D,
     }
   }
 
+  if (D->hasAttr<NDPSimulateAttr>() && !D->hasAttr<NDPNoSimulateAttr>()) {
+    B.addAttribute(llvm::Attribute::NDPSimulate);
+  }
+
   // Add other optimization related attributes if we are optimizing this
   // function.
   if (!D->hasAttr<OptimizeNoneAttr>()) {

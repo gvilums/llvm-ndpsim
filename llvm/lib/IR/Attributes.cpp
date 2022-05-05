@@ -447,6 +447,10 @@ std::string Attribute::getAsString(bool InAttrGrp) const {
     }
   }
 
+  if (hasAttribute(Attribute::NDPSimulate)) {
+    return "ndpsimulate";
+  }
+
   // Convert target-dependent attributes to strings of the form:
   //
   //   "kind"

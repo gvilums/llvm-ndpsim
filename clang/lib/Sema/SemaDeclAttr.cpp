@@ -8312,6 +8312,14 @@ EnforceTCBLeafAttr *Sema::mergeEnforceTCBLeafAttr(
       *this, D, AL);
 }
 
+static void handleNDPSimulateAttr(Sema &S, Decl *D, const ParsedAttr &AL) {
+  D->addAttr(::new (S.Context) NDPSimulateAttr(S.Context, AL));
+}
+
+static void handleNDPNoSimulateAttr(Sema &S, Decl *D, const ParsedAttr &AL) {
+  D->addAttr(::new (S.Context) NDPNoSimulateAttr(S.Context, AL));
+}
+
 //===----------------------------------------------------------------------===//
 // Top Level Sema Entry Points
 //===----------------------------------------------------------------------===//
@@ -9036,6 +9044,13 @@ static void ProcessDeclAttribute(Sema &S, Scope *scope, Decl *D,
 
   case ParsedAttr::AT_UsingIfExists:
     handleSimpleAttribute<UsingIfExistsAttr>(S, D, AL);
+    break;
+
+  case ParsedAttr::AT_NDPSimulate:
+    handleNDPSimulateAttr(S, D, AL);
+    break;
+  case ParsedAttr::AT_NDPNoSimulate:
+    handleNDPNoSimulateAttr(S, D, AL);
     break;
   }
 }

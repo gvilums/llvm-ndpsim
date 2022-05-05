@@ -3999,3 +3999,15 @@ def NoRandomizeLayout : InheritableAttr {
   let LangOpts = [COnly];
 }
 def : MutualExclusions<[RandomizeLayout, NoRandomizeLayout]>;
+
+def NDPSimulate : InheritableAttr {
+  let Spellings = [CXX11<"ndp", "sim">];
+  let Subjects = SubjectList<[Function]>;
+  let Documentation = [Undocumented];
+}
+
+def NDPNoSimulate : InheritableAttr {
+  let Spellings = [CXX11<"ndp", "nosim">];
+  let Subjects = SubjectList<[Function]>;
+  let Documentation = [Undocumented];
+}

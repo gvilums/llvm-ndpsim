@@ -249,6 +249,8 @@
 #include "llvm/Transforms/Vectorize/SLPVectorizer.h"
 #include "llvm/Transforms/Vectorize/VectorCombine.h"
 
+#include "llvm/Transforms/Instrumentation/NDPSim.h"
+
 using namespace llvm;
 
 static const Regex DefaultAliasRegex(
